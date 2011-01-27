@@ -13,8 +13,8 @@ module Acts
 
         # Don't extend or include twice. This will allow acts_as_importable to be called multiple times.
         # eg. once in a parent class and once again in the child class, where it can override some options.
-        extend  AMC::Acts::Importable::SingletonMethods unless self.methods.include?('import') && self.methods.include?('import_all')
-        include AMC::Acts::Importable::InstanceMethods unless self.included_modules.include?(AMC::Acts::Importable::InstanceMethods)
+        extend  Acts::Importable::SingletonMethods unless self.methods.include?('import') && self.methods.include?('import_all')
+        include Acts::Importable::InstanceMethods unless self.included_modules.include?(Acts::Importable::InstanceMethods)
       end
 
     end # ClassMethods
