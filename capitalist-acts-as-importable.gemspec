@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "README.textile",
     "Rakefile",
     "VERSION",
+    "capitalist-acts-as-importable.gemspec",
     "init.rb",
     "lib/acts_as_importable.rb",
     "lib/core_extensions.rb",
