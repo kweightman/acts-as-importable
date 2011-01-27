@@ -75,3 +75,7 @@ module Acts
 
   end
 end
+
+require 'core_extensions'
+ActiveRecord::Base.class_eval { include Acts::Importable }
+
