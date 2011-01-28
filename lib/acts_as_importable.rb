@@ -67,6 +67,8 @@ module Acts
               # TODO log an error that the model failed to save
               # TODO remove the raise once we're out of the development cycle
               raise
+            else
+              after_import(new_model) if self.respond_to? :after_import
             end
           end
         end
