@@ -39,7 +39,7 @@ module Acts
 
       def lookup(id)
         lookup_class = read_inheritable_attribute(:importable_to) || "#{self.to_s.split('::').last}"
-        lookups[id] ||= Kernel.const_get(lookup_class).first(:conditions => {:legacy_id => id, :legacy_class => self.to_s}).try(:id__)
+        lookups[id] ||= Kernel.const_get(lookup_class).first(:conditions => {:legacy_id => id, :legacy_class => self.to_s}).try(:id)
       end
 
       def flush_lookups!
@@ -57,12 +57,12 @@ module Acts
     module InstanceMethods
 
       def import
-        returning to_model do |new_model|
+        to_model.tap do |new_model|
           if new_model
             new_model.legacy_id     = self.id         if new_model.respond_to?(:"legacy_id=")
             new_model.legacy_class  = self.class.to_s if new_model.respond_to?(:"legacy_class=")
 
-            if !new_model.save
+            if !new_model.save(:validate => false)
               p new_model.errors
               # TODO log an error that the model failed to save
               # TODO remove the raise once we're out of the development cycle

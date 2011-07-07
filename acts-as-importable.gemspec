@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{capitalist-acts-as-importable}
+  s.name = %q{acts-as-importable}
   s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
     "README.textile",
     "Rakefile",
     "VERSION",
-    "capitalist-acts-as-importable.gemspec",
+    "acts-as-importable.gemspec",
     "init.rb",
     "lib/acts_as_importable.rb",
     "lib/core_extensions.rb",
