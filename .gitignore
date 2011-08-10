@@ -8,4 +8,6 @@ spec/dummy/app/models/
 spec/dummy/config/database.yml
 spec/matchers/
 spec/rails_spec_helper.rb
+*.swp
 
+spec/spec_helper.rb
