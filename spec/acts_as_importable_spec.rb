@@ -1,13 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe AMC::Acts::Importable do
+describe Acts::Importable do
   
   it "should include instance methods" do
-    Legacy::Thing.new.should be_kind_of(AMC::Acts::Importable::InstanceMethods)
+    Legacy::Thing.new.should be_kind_of(Acts::Importable::InstanceMethods)
   end
   
   it "should extend singleton methods" do
-    Legacy::Thing.should be_kind_of(AMC::Acts::Importable::SingletonMethods)
+    Legacy::Thing.should be_kind_of(Acts::Importable::SingletonMethods)
   end
   
   describe "importing from an instance of a single model" do

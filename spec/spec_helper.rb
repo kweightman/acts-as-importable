@@ -5,7 +5,8 @@ require 'rubygems'
 require 'active_record'
 require File.dirname(__FILE__) + '/../init.rb'
 
-require 'spec'
+require 'rspec'
+require 'logger'
 
 config = YAML::load(IO.read(File.dirname(__FILE__) + '/database.yml'))
 ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/debug.log")
@@ -38,7 +39,7 @@ module Legacy
   end
 end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   
   def create_legacy_thing(attrs = {})
     Legacy::Thing.create({:legacy_name => 'Grandfather Clock', :legacy_description => 'Tick tock'}.merge(attrs))
