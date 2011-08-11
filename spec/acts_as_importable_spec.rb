@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'ruby-debug'
 
 describe Acts::Importable do
   
@@ -72,22 +73,64 @@ describe Acts::Importable do
     end
   end
 
-  describe "after importing" do
+  describe "before importing" do
     before(:each) do
       @legacy_other_thing = create_other_legacy_thing
+      @legacy_thing = create_legacy_thing
     end
 
     describe "each model" do
-      it "should call the instance method after_import" do
-        new_model = @legacy_other_thing.import
-        new_model.description.end_with?("AFTER_IMPORT_INSTANCE").should == true
+      it "should call the instance method before_import if defined" do
+        @legacy_other_thing.should_receive(:before_import).once
+        @legacy_other_thing.import
+      end
+
+      it "should not call the instance method before_import if not defined" do
+        @legacy_thing.should_not_receive(:before_import)
+        @legacy_thing.import
       end
     end
 
     describe "all models" do
-      it "should call the class method after_import" do
-        new_models = Legacy::OtherThing.import_all
-        new_models.first.description.end_with?("AFTER_IMPORT_CLASS").should == true
+      it "should call the class method before_import if defined" do
+        Legacy::OtherThing.should_receive(:before_import).once
+        Legacy::OtherThing.import_all
+      end
+
+      it "should not call the class method before_import if not defined" do
+        Legacy::Thing.should_not_receive(:before_import)
+        Legacy::Thing.import_all
+      end
+    end
+  end
+  
+  describe "after importing" do
+    before(:each) do
+      @legacy_other_thing = create_other_legacy_thing
+      @legacy_thing = create_legacy_thing
+    end
+
+    describe "each model" do
+      it "should call the instance method after_import if defined" do
+        @legacy_other_thing.should_receive(:after_import).once
+        @legacy_other_thing.import
+      end
+
+      it "should not call the instance method after_import if not defined" do
+        @legacy_thing.should_not_receive(:after_import)
+        @legacy_thing.import
+      end
+    end
+
+    describe "all models" do
+      it "should call the class method after_import if defined" do
+        Legacy::OtherThing.should_receive(:after_import).once
+        Legacy::OtherThing.import_all
+      end
+
+      it "should not call the class method after_import if not defined" do
+        Legacy::Thing.should_not_receive(:after_import)
+        Legacy::Thing.import_all
       end
     end
   end

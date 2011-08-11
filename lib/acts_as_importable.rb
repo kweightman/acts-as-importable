@@ -25,6 +25,7 @@ module Acts
       end
 
       def import_all
+        self.before_import if self.respond_to? :before_import
         all.each do |legacy_model|
           legacy_model.import
         end
@@ -61,6 +62,7 @@ module Acts
     module InstanceMethods
 
       def import
+        before_import if self.respond_to? :before_import
         to_model.tap do |new_model|
           if new_model
             new_model.legacy_id     = self.id         if new_model.respond_to?(:"legacy_id=")
