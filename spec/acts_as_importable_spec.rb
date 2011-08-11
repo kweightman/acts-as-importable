@@ -76,8 +76,6 @@ describe Acts::Importable do
   describe "after importing" do
     before(:each) do
       @legacy_other_thing = create_other_legacy_thing
-      #Legacy::OtherThing.stub!(:find).and_return(@legacy_other_thing)
-      #Legacy::OtherThing.stub!(:all).and_return([@legacy_other_thing])
     end
 
     describe "each model" do
@@ -89,8 +87,8 @@ describe Acts::Importable do
 
     describe "all models" do
       it "should call the class method after_import" do
-        Legacy::OtherThing.import_all
-        Thing.find(Legacy::OtherThing.lookup(@legacy_other_thing.id)).description.end_with?("AFTER_IMPORT_CLASS").should == true
+        new_models = Legacy::OtherThing.import_all
+        new_models.first.description.end_with?("AFTER_IMPORT_CLASS").should == true
       end
     end
   end

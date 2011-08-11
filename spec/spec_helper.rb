@@ -38,13 +38,13 @@ module Legacy
     acts_as_importable :to => 'Thing'
 
     def after_import(new_model)
-      new_model.description << "AFTER_IMPORT_INSTANCE"
+      new_model.description += "AFTER_IMPORT_INSTANCE"
       new_model.save
     end
 
     def self.after_import(new_models)
       new_models.each do |new_model|
-        new_model.description << "AFTER_IMPORT_CLASS"
+        new_model.description += "AFTER_IMPORT_CLASS"
         new_model.save
       end
     end
