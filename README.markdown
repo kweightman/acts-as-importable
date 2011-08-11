@@ -1,13 +1,10 @@
 Acts as Importable
 ==================
 
-Originally written for Rails 2 / Ruby 1.8 by [Tim Riley](https://github.com/timriley).
-
-Updated to Rails 3 by [Joe Martinez](https://github.com/capitalist).
-
-Updated to Ruby 1.9.2 by [Pranas Kiziela](https://github.com/Pranas).
-
-Coverage improved and additional hooks added by [Brandon Valentine](https://github.com/brandonvalentine).
+Originally written for Rails 2 / Ruby 1.8 by [Tim Riley](https://github.com/timriley).  
+Updated to Rails 3 by [Joe Martinez](https://github.com/capitalist).  
+Updated to Ruby 1.9.2 by [Pranas Kiziela](https://github.com/Pranas).  
+Coverage improved and additional hooks added by [Brandon Valentine](https://github.com/brandonvalentine).  
 
 Taste's good with Joe Martinez' [model_mill](https://rubygems.org/gems/model_mill/) gem.
 
@@ -21,10 +18,7 @@ TODO:
 
 Refactor to use AR-style hooks, rather than relying on specially named methods.  That's a lame-o approach.
 
-Copyright (c) 2009 Tim Riley, released under the MIT license
-
-Some bits Copyright (c) 2011 Joe Martinez, released under the same
-
-Some other bits Copyright (c) 2011 Pranas Kiziela, released under the same
-
-Yet more bits Copyright (c) 2011 Brandon Valentine, released under the same
+Copyright (c) 2009 Tim Riley, released under the MIT license  
+Some bits Copyright (c) 2011 Joe Martinez, released under the same  
+Some other bits Copyright (c) 2011 Pranas Kiziela, released under the same  
+Yet more bits Copyright (c) 2011 Brandon Valentine, released under the same  
