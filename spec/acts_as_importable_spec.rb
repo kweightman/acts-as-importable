@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'ruby-debug'
 
 describe Acts::Importable do
   
@@ -71,8 +72,30 @@ describe Acts::Importable do
       Legacy::Thing.import_all
     end
   end
+
+  describe "after importing" do
+    before(:each) do
+      @legacy_other_thing = create_other_legacy_thing
+      #Legacy::OtherThing.stub!(:find).and_return(@legacy_other_thing)
+      #Legacy::OtherThing.stub!(:all).and_return([@legacy_other_thing])
+    end
+
+    describe "each model" do
+      it "should call the instance method after_import" do
+        new_model = @legacy_other_thing.import
+        new_model.description.end_with?("AFTER_IMPORT_INSTANCE").should == true
+      end
+    end
+
+    describe "all models" do
+      it "should call the class method after_import" do
+        Legacy::OtherThing.import_all
+        Thing.find(Legacy::OtherThing.lookup(@legacy_other_thing.id)).description.end_with?("AFTER_IMPORT_CLASS").should == true
+      end
+    end
+  end
   
-  describe "looking up legcy IDs for already imported models" do
+  describe "looking up legacy IDs for already imported models" do
     before(:all) do
       @legacy_thing   = create_legacy_thing
       @imported_thing = @legacy_thing.import
