@@ -12,13 +12,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "capitalist-acts-as-importable"
-  gem.homepage = "http://github.com/capitalist/acts-as-importable"
+  gem.name = "brandonvalentine-acts-as-importable"
+  gem.homepage = "http://github.com/brandonvalentine/acts-as-importable"
   gem.license = "MIT"
   gem.summary = %Q{Helps transfer records from one database to another}
   gem.description = %Q{Allows you to connect to a second database and systematically transfer those records}
-  gem.email = "joe@joemartinez.name"
-  gem.authors = ["Tim Riley", "Joe Martinez"]
+  gem.email = "brandon@brandonvalentine.com"
+  gem.authors = ["Tim Riley", "Joe Martinez", "Pranas Kiziela", "Brandon Valentine"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
