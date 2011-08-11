@@ -10,6 +10,7 @@ group :development do
   gem "rcov", ">= 0"
   gem "awesome_print"
   gem "mysql2"
+  gem "ruby-debug19"
 end
 
 

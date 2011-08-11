@@ -36,6 +36,11 @@ module Legacy
     set_table_name 'legacy_things'
     
     acts_as_importable :to => 'Thing'
+
+    def after_import(new_model)
+      new_model.description << "AFTER_IMPORT_INSTANCE"
+      new_model.save
+    end
   end
 end
 
