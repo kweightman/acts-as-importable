@@ -26,15 +26,14 @@ module Acts
 
       def import_all
         self.before_import if self.method_defined? :before_import
-        all.each do |legacy_model|
+        new_models = all.collect do |legacy_model|
           legacy_model.import
         end
-        self.after_import(lookup_class.constantize.all) if self.method_defined? :after_import
+        self.after_import(new_models) if self.method_defined? :after_import
       end
 
-      # This requires a numeric primary key for the legacy tables
       def import_all_in_batches
-        each do |legacy_model|
+        self.find_in_batches do |legacy_model|
           legacy_model.import
         end
       end
