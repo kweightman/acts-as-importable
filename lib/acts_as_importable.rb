@@ -25,11 +25,11 @@ module Acts
       end
 
       def import_all
-        self.before_import if self.respond_to? :before_import
+        self.before_import if self.method_defined? :before_import
         all.each do |legacy_model|
           legacy_model.import
         end
-        self.after_import(lookup_class.constantize.all) if self.respond_to? :after_import
+        self.after_import(lookup_class.constantize.all) if self.method_defined? :after_import
       end
 
       # This requires a numeric primary key for the legacy tables
@@ -62,7 +62,7 @@ module Acts
     module InstanceMethods
 
       def import
-        before_import if self.respond_to? :before_import
+        before_import if self.class.instance_methods.include? :before_import
         to_model.tap do |new_model|
           if new_model
             new_model.legacy_id     = self.id         if new_model.respond_to?(:"legacy_id=")
@@ -74,7 +74,7 @@ module Acts
               # TODO remove the raise once we're out of the development cycle
               raise
             else
-              after_import(new_model) if self.respond_to? :after_import
+              after_import(new_model) if self.class.instance_methods.include? :after_import
             end
           end
         end
