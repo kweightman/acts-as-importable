@@ -28,6 +28,7 @@ module Acts
         all.each do |legacy_model|
           legacy_model.import
         end
+        self.after_import(lookup_class.constantize.all) if self.respond_to? :after_import
       end
 
       # This requires a numeric primary key for the legacy tables
@@ -37,9 +38,12 @@ module Acts
         end
       end
 
+      def lookup_class
+        read_inheritable_attribute(:importable_to) || "#{self.to_s.split('::').last}"
+      end
+
       def lookup(id)
-        lookup_class = read_inheritable_attribute(:importable_to) || "#{self.to_s.split('::').last}"
-        lookups[id] ||= Kernel.const_get(lookup_class).first(:conditions => {:legacy_id => id, :legacy_class => self.to_s}).try(:id)
+        lookups[id] ||= lookup_class.constantize.first(:conditions => {:legacy_id => id, :legacy_class => self.to_s}).try(:id)
       end
 
       def flush_lookups!
