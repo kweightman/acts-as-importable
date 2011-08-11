@@ -46,7 +46,7 @@ module Legacy
     def after_import(new_model)
     end
 
-    def self.after_import(new_models)
+    def self.after_import(*new_models)
     end
   end
 end

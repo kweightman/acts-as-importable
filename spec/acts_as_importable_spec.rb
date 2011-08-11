@@ -100,6 +100,18 @@ describe Acts::Importable do
         Legacy::Thing.should_not_receive(:before_import)
         Legacy::Thing.import_all
       end
+
+      describe "in batches" do
+        it "should call the instance method before_import if defined" do
+          Legacy::OtherThing.should_receive(:before_import).once
+          Legacy::OtherThing.import_all_in_batches
+        end
+
+        it "should not call the instance method before_import if not defined" do
+          Legacy::Thing.should_not_receive(:before_import)
+          Legacy::Thing.import_all_in_batches
+        end
+      end
     end
   end
   
@@ -130,6 +142,18 @@ describe Acts::Importable do
       it "should not call the class method after_import if not defined" do
         Legacy::Thing.should_not_receive(:after_import)
         Legacy::Thing.import_all
+      end
+
+      describe "in batches" do
+        it "should call the instance method after_import if defined" do
+          Legacy::OtherThing.should_receive(:after_import).once
+          Legacy::OtherThing.import_all_in_batches
+        end
+
+        it "should not call the instance method after_import if not defined" do
+          Legacy::Thing.should_not_receive(:after_import)
+          Legacy::Thing.import_all_in_batches
+        end
       end
     end
   end

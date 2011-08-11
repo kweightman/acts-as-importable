@@ -33,9 +33,11 @@ module Acts
       end
 
       def import_all_in_batches
-        self.find_in_batches do |legacy_model|
+        self.before_import if self.method_defined? :before_import
+        self.find_each do |legacy_model|
           legacy_model.import
         end
+        self.after_import if self.method_defined? :after_import
       end
 
       def lookup_class
