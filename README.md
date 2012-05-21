@@ -5,7 +5,7 @@ Originally written for Rails 2 / Ruby 1.8 by [Tim Riley](https://github.com/timr
 Updated to Rails 3 by [Joe Martinez](https://github.com/capitalist).  
 Updated to Ruby 1.9.2 by [Pranas Kiziela](https://github.com/Pranas).  
 Coverage improved and additional hooks added by [Brandon Valentine](https://github.com/brandonvalentine).  
-Updated to Rails 3.2.1 because write_inheritable_attribute replaced with class_attribute by [Keith Weightman](https://github.com/kweightman).
+Updated to Rails 3.2.3 because write_inheritable_attribute replaced with class_attribute by [Keith Weightman](https://github.com/kweightman).
 
 Taste's good with Joe Martinez' [model_mill](https://rubygems.org/gems/model_mill/) gem.
 
