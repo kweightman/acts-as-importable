@@ -4,21 +4,20 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{acts-as-importable}
-  s.version = "1.1.0"
+  s.name = "acts-as-importable"
+  s.version = "1.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Tim Riley", "Joe Martinez"]
-  s.date = %q{2011-01-27}
-  s.description = %q{Allows you to connect to a second database and systematically transfer those records}
-  s.email = %q{joe@joemartinez.name}
+  s.authors = ["Tim Riley", "Joe Martinez", "Pranas Kiziela", "Keith Weightman"]
+  s.date = "2012-05-21"
+  s.description = "Allows you to connect to a second database and systematically transfer those records"
+  s.email = "kweightman@apangea.com"
   s.extra_rdoc_files = [
-    "README.textile"
+    "README.md"
   ]
   s.files = [
     "Gemfile",
     "Gemfile.lock",
-    "README.textile",
     "Rakefile",
     "VERSION",
     "acts-as-importable.gemspec",
@@ -32,52 +31,40 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "tasks/acts_as_importable_tasks.rake"
   ]
-  s.homepage = %q{http://github.com/capitalist/acts-as-importable}
+  s.homepage = "http://github.com/kweightman/acts-as-importable"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Helps transfer records from one database to another}
-  s.test_files = [
-    "spec/acts_as_importable_spec.rb",
-    "spec/schema.rb",
-    "spec/spec_helper.rb"
-  ]
+  s.rubygems_version = "1.8.17"
+  s.summary = "Helps transfer records from one database to another"
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rails>, ["= 3.0.3"])
+      s.add_development_dependency(%q<rails>, ["= 3.2.3"])
       s.add_development_dependency(%q<capybara>, [">= 0.4.0"])
       s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
       s.add_development_dependency(%q<rspec-rails>, [">= 2.0.0.beta"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<awesome_print>, [">= 0"])
-      s.add_development_dependency(%q<mysql2>, [">= 0"])
     else
-      s.add_dependency(%q<rails>, ["= 3.0.3"])
+      s.add_dependency(%q<rails>, ["= 3.2.3"])
       s.add_dependency(%q<capybara>, [">= 0.4.0"])
       s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
       s.add_dependency(%q<rspec-rails>, [">= 2.0.0.beta"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_dependency(%q<awesome_print>, [">= 0"])
-      s.add_dependency(%q<mysql2>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rails>, ["= 3.0.3"])
+    s.add_dependency(%q<rails>, ["= 3.2.3"])
     s.add_dependency(%q<capybara>, [">= 0.4.0"])
     s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
     s.add_dependency(%q<rspec-rails>, [">= 2.0.0.beta"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
     s.add_dependency(%q<awesome_print>, [">= 0"])
-    s.add_dependency(%q<mysql2>, [">= 0"])
   end
 end
 
